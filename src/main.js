@@ -8,6 +8,7 @@ import store from './store'
 //引入vue-router
 import VueRouter from "vue-router";
 import router from "@/router";
+import './axios'
 
 Vue.prototype.$axios = axios
 

@@ -30,12 +30,32 @@ export default {
   methods: {
     loginIn() {
       //请求后端登陆
-      this.$axios.post("http://localhost:8181/user/login",this.LoginForm).then((resp)=>{
+      this.$axios.post("/user/login",this.LoginForm).then((resp)=>{
+        //存储用户信息和token到localStorage
+        console.log(resp)
+        //判断用户是否登陆成功
+        if(resp.data.code === 1002) {
+          this.$message({
+            message: 'username or password is wrong',
+            type: 'error'
+          });
+          return
+        }
+        this.$store.commit("SET_TOKEN",resp.data.data);
+        this.$store.commit("SET_USERINFO",this.LoginForm.username)
+        this.$message({
+          message: 'login successful',
+          type: 'success'
+        });
 
-        console.log(resp.data)
+        //TODO 跳转到用户主页面 主页面暂未编写 暂时跳到Competition页面
+        this.$router.replace("/competition")
       })
     },
-    registerUser() {},
+    registerUser() {
+      //用户点击注册按钮跳转到注册页面
+      this.$router.push("/userReg")
+    },
   },
 };
 </script>

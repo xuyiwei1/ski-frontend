@@ -1,0 +1,128 @@
+<template>
+  <div>
+    <Nav></Nav>
+    <div class="userInfo">
+      <h1>User Information</h1>
+      <el-table
+          :data="tableData"
+          border
+          style="width: 100%">
+        <el-table-column
+            fixed
+            prop="userId"
+            label="UserID"
+            width="200">
+        </el-table-column>
+        <el-table-column
+            prop="username"
+            label="Name"
+            width="150">
+        </el-table-column>
+        <el-table-column
+            prop="password"
+            label="Password"
+            width="200">
+        </el-table-column>
+        <el-table-column
+            prop="gender"
+            label="Gender"
+            width="100">
+        </el-table-column>
+        <el-table-column
+            prop="age"
+            label="Age"
+            width="100">
+        </el-table-column>
+        <el-table-column
+            prop="level"
+            label="Level"
+            width="100">
+        </el-table-column>
+        <el-table-column
+            prop="telephone"
+            label="Telephone"
+            width="300">
+        </el-table-column>
+        <el-table-column
+            prop="email"
+            label="Email"
+            width="300">
+        </el-table-column>
+
+        <el-table-column
+            fixed="right"
+            label="Operation"
+            width="200">
+          <template slot-scope="scope">
+            <el-button @click="handleClick(scope.row)" type="text" size="20px">Delete</el-button>
+            <el-button type="text" size="20px">Edit</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+    </div>
+  </div>
+</template>
+
+<script>
+import Nav from "@/components/Nav";
+
+export default {
+  data() {
+    return {
+      name: 'UserInfo',
+      tableData: [{
+        userId: '',
+        username: 'jack',
+        password: 'tttt',
+        age: '22',
+        gender: '',
+        telephone: '3232',
+        email: 'dddd@.com',
+      },
+        {
+          userName: 'jack',
+          passWord: 'tttt',
+          age: '22',
+          gender: '',
+          telephone: '3232',
+          email: 'dddd@.com',
+        }]
+    }
+  },
+  components: {
+    Nav
+  },
+  methods: {
+    handleClick(row) {
+      console.log(row);
+    },
+    //管理员查询用户的信息
+    getUserInfoList(){
+      this.$axios.get("/admin/allusers").then((resp)=>{
+        console.log("@allUsers",resp)
+        this.tableData = resp.data.data
+        this.tableData.forEach((item) => {
+          if(item.gender==='1'){
+            item.gender = 'male'
+          }else {
+            item.gender = 'female'
+          }
+        })
+      })
+    }
+  },
+  mounted() {
+    this.getUserInfoList()
+  }
+}
+</script>
+
+<style>
+
+.userInfo {
+  width: 74%;
+  margin-left: 10px;
+  float: left;
+  box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.5);
+}
+</style>

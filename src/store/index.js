@@ -18,7 +18,7 @@ const mutations = {
     //设置用户信息
     SET_USERINFO(state,userInfo) {
         state.userInfo = userInfo
-        localStorage.setItem("userInfo",userInfo)
+        localStorage.setItem("userInfo",JSON.stringify(userInfo))
     },
     //删除token和用户信息
     REMOVE_INFO(state) {
@@ -26,6 +26,9 @@ const mutations = {
         state.userInfo = {}
         localStorage.setItem("token",'')
         localStorage.setItem("userInfo",JSON.stringify(''))
+    },
+    SET_ACTIVITY_ID(state,activityId) {
+        state.activityId = activityId
     }
 }
 //准备state对象——保存具体的数据
@@ -33,7 +36,9 @@ const state = {
     // 保存token在localStorage中 供多个组价共享
     token: localStorage.getItem("token"),
     //保存用户的信息，从localStorage中获取
-    userInfo: JSON.parse(localStorage.getItem("userInfo"))
+    userInfo: JSON.parse(localStorage.getItem("userInfo")),
+    //活动的id
+    activityId: ''
 }
 
 const getters = {
@@ -49,6 +54,9 @@ const getters = {
         }else {
             return state.token
         }
+    },
+    getActivityId(state) {
+        return state.activityId
     }
 }
 

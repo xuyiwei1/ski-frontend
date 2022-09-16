@@ -1,17 +1,16 @@
 <template>
   <div id="app">
-    <router-link to="/login"/>
-    <router-view></router-view>
+   <Login/>
   </div>
 </template>
 
 <script>
-import UserReg from "@/components/UserReg";
+import Login from "@/views/Login";
 
 export default {
   name: 'App',
   components: {
-    UserReg
+    Login
   }
 }
 </script>

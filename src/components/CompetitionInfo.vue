@@ -19,7 +19,7 @@
           <span class="span1">People:&nbsp;{{ item.remainPerson }}/{{ item.allPerson }}</span>
         </div>
         <div style="width: 9%;height: 100%;float:left">
-          <el-button type="primary" class="el-button2">Delete</el-button>
+          <el-button type="primary" class="el-button2" @click="deleteCompetition(item.activityId)">Delete</el-button>
           <br>
           <el-button type="info" class="el-button2">Edit</el-button>
         </div>
@@ -106,6 +106,18 @@ export default {
         console.log("@respSearch", resp)
         //查询结果回显到data中
         this.competition = resp.data.data
+      })
+    },
+    //删除竞赛活动
+    deleteCompetition(activityId) {
+      this.$axios.get("/activity/"+activityId).then((resp)=>{
+        this.$message({
+          message: 'delete competition success',
+          type: 'success',
+          duration: 2000
+        });
+        //刷新活动列表
+        this.getCompetitionList()
       })
     }
   },

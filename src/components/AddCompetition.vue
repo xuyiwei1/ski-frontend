@@ -111,6 +111,7 @@ export default {
             duration: 2000
           });
         }
+        //TODO 判断当前用户是管理员还是普通用户，跳转到不同的界面，根据localStorage中存储的userInfo
         this.$router.push("/nav")
       })
     }

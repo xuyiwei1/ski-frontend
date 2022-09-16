@@ -1,8 +1,8 @@
 <template>
   <div>
     <!--  需要一个顶部的信息组件，用于展示用户的用户名信息，退出登陆等功能...，表示当前系统是哪个用户使用中  -->
-    username:<span>{{nickname}}</span>
-    <el-button round class="el-button1">Add Competition</el-button>
+    <span style="color: red">username:{{nickname}}</span>
+    <el-button round class="el-button1" @click="addCompetition">Add Competition</el-button>
     <div>
     <el-input  v-model="keywords" clearable placeholder=" Please Input Competition"></el-input>
     <el-button icon="el-icon-search" @click="searchCompetition" circle></el-button>
@@ -19,8 +19,8 @@
                 <span>People:&nbsp;{{item.remainPerson}}/{{item.allPerson}}</span>
             </div>
             <div style="width: 9%;height: 100%;float:left">
-                <el-button type="primary">Join</el-button> <br>
-                <el-button type="info">Exit</el-button>
+                <el-button type="primary" @click="joinCompetition(item.activityId)">Join</el-button> <br>
+                <el-button type="info" @click="exitCompetition(item.activityId)">Exit</el-button>
                 <el-button class="el-button2" @click="viewCompetitionInfo(item.activityId)" type="info">View</el-button>
             </div>
     </div>
@@ -92,8 +92,22 @@ export default {
     viewCompetitionInfo(activityId) {
       //存储ActivityId
       this.$store.commit("SET_ACTIVITY_ID",activityId);
-      //跳转到竞赛详情页面
+      //TODO 跳转到竞赛详情页面 暂无
       this.$router.push("/competitionInfo")
+    },
+    //添加比赛
+    addCompetition() {
+      //跳转到添加比赛页面
+      this.$router.push("/addCompetition")
+    },
+    //加入竞赛活动
+    joinCompetition(activityId) {
+      //TODO 加入竞赛活动，需要用户的id，从localStorage取但是后端没有返回，活动ID查出来的和数据库不一致
+      console.log("@joinCompetition",activityId)
+    },
+    exitCompetition(activityId) {
+      //TODO 退出竞赛活动，需要用户的id，从localStorage取但是后端没有返回，活动ID查出来的和数据库不一致
+      console.log("@exitCompetition",activityId)
     }
   },
   mounted() {

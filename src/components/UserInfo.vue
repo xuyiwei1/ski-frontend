@@ -93,8 +93,19 @@ export default {
     Nav
   },
   methods: {
+    //删除用户
     handleClick(row) {
-      console.log(row);
+      console.log("@row",row);
+      //删除用户
+      this.$axios.get("/admin/"+row.userId).then((resp)=>{
+        this.$message({
+          message: 'delete success',
+          type: 'success',
+          duration: 2000
+        });
+        //刷新用户列表
+        this.getUserInfoList()
+      })
     },
     //管理员查询用户的信息
     getUserInfoList(){

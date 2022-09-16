@@ -32,7 +32,7 @@ export default {
       //请求后端登陆
       this.$axios.post("/user/login",this.LoginForm).then((resp)=>{
         //存储用户信息和token到localStorage
-        console.log(resp)
+        console.log("@UserInfo",resp)
         //判断用户是否登陆成功
         if(resp.data.code === 1002) {
           this.$message({

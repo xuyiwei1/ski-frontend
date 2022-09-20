@@ -6,13 +6,13 @@
     <br>
     <span class="span_view">Address: {{ competition.address }}</span>
     <hr>
-   <span class="span_view">StartTime: {{competition.stratTime}}</span
+   <span class="span_view">StartTime: {{competition.startTime}}</span
     ><hr>
     <span class="span_view">EndTime: {{competition.endTime}}</span
     ><hr>
     <span class="span_view">People: {{competition.remainPerson}}/{{competition.allPerson}}</span
     ><hr>
-    <span class="span_view">Level: {{competition.level}}</span><hr>
+    <span class="span_view">Level: {{getLevel}}</span><hr>
     <span class="span_view" style="margin-bottom:10px">Rank</span>
         <ol class="ol_view">
             <li class="li_view" v-for="p in user" :key="p.userId">
@@ -32,7 +32,7 @@ export default {
         activityId: "1",
         name: "run",
         address: "Beijing",
-        stratTime: "2022-10-10",
+        startTime: "2022-10-10",
         endTime: "2022-11-1",
         level: "Skilled",
         allPerson: "6",
@@ -53,8 +53,31 @@ export default {
     };
   },
   methods: {
-    Submit() {},
+    //TODO 根据活动（比赛id）查询活动详细信息
+    getCompetitionSpecificInfo() {
+      console.log(this.$store.getters.getActivityId)
+      this.$axios.get("/activity/detail/"+this.$store.getters.getActivityId).then((resp)=>{
+        console.log(resp)
+        this.competition = resp.data.data
+      })
+    }
   },
+  mounted() {
+    //初始化活动详情
+    this.getCompetitionSpecificInfo()
+  },
+  computed: {
+    //使用计算属性转换level对应的值1->Beginner...
+    getLevel() {
+      if(this.competition.level === 1) {
+        return 'Beginner'
+      }else if(this.competition.level === 2) {
+        return 'Skilled'
+      }else {
+        return 'Elite'
+      }
+    }
+  }
 };
 </script>
 
@@ -101,7 +124,7 @@ h1 {
   width: 500px;
   margin-top: 10px;
   font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-  font-size: 20px; 
+  font-size: 20px;
 }
 
 .ol_view{

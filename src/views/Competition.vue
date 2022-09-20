@@ -16,7 +16,7 @@
             <div class="divMiddle">
                 <span class="span_comp">Address:&nbsp;{{item.address}}</span> <br>
                 <span class="span_comp">Time:&nbsp;{{item.startTime}} to {{item.endTime}}</span> <br>
-                <span class="span_comp">Level:&nbsp;{{item.level}}</span> <br>
+                <span class="span_comp">Level:&nbsp;{{getLevel(item.level)}}</span> <br>
                 <span class="span_comp">People:&nbsp;{{item.remainPerson}}/{{item.allPerson}}</span>
             </div>
             <div style="width: 9%;height: 100%;float:left">
@@ -92,8 +92,8 @@ export default {
     viewCompetitionInfo(activityId) {
       //存储ActivityId
       this.$store.commit("SET_ACTIVITY_ID",activityId);
-      //TODO 跳转到竞赛详情页面 暂无
-      this.$router.push("/competitionInfo")
+      // 跳转到竞赛详情页面
+      this.$router.push("/viewCompetition")
     },
     //添加比赛
     addCompetition() {
@@ -108,6 +108,17 @@ export default {
     exitCompetition(activityId) {
       //TODO 退出竞赛活动，需要用户的id，从localStorage取但是后端没有返回，活动ID查出来的和数据库不一致
       console.log("@exitCompetition",activityId)
+    },
+    //转换level对应的值1->Beginner...
+    getLevel(numLevel) {
+      console.log(numLevel === 1)
+      if(numLevel === 1) {
+        return 'Beginner'
+      }else if(numLevel === 2) {
+        return 'Skilled'
+      }else {
+        return 'Elite'
+      }
     }
   },
   mounted() {

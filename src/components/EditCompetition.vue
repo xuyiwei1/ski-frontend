@@ -17,7 +17,7 @@
         <el-form-item >
           MaxPeople:&nbsp;<el-input class="el-input_edit" v-model="UpdateCompetitionForm.allPerson"></el-input>
         </el-form-item>
-        Level:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<el-select class="el-select_edit" v-model="level" placeholder="Please">
+        Level:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<el-select class="el-select_edit" v-model="UpdateCompetitionForm.level" placeholder="Please">
           <el-option
             v-for="item in options"
             :key="item.value"
@@ -41,7 +41,7 @@
       </el-form>
     </div>
   </template>
-  
+
   <script>
   export default {
     data() {
@@ -49,10 +49,11 @@
         name: "EditCompetition",
         UpdateCompetitionForm: {
           name: "",
-          adress: "",
+          address: "",
           startTime: "",
           endTime: "",
-          allPerson:""
+          allPerson:"",
+          level: ""
         },
         options: [
           {
@@ -88,15 +89,53 @@
             score:'22',
         },
         ],
-        level: "",
       };
     },
     methods: {
-      Submit() {},
+      //请求修改活动信息
+      Submit() {
+        this.$axios.post('/activity/edit',this.UpdateCompetitionForm).then((resp) => {
+          console.log(resp)
+          if(resp.data.code === 200) {
+            this.$message({
+              message: 'updated competition information success',
+              type: 'success',
+              duration: 2000
+            });
+          }else {
+            this.$message({
+              message: 'some problems occur on database',
+              type: 'warning',
+              duration: 2000
+            });
+          }
+          //跳转到competitionInfo页面
+          this.$router.back()
+        })
+      },
+      //获取某个活动的详细信息
+      getACompetitionSpecificInfo() {
+        const activityId = this.$store.getters.getActivityId
+        this.$axios.get('/activity/detail/'+activityId).then((resp) => {
+          console.log(resp)
+          this.UpdateCompetitionForm = resp.data.data
+          if(resp.data.data.level === 1) {
+            this.UpdateCompetitionForm.level = 'Beginner'
+          } else if(resp.data.data.level === 2) {
+            this.UpdateCompetitionForm.level = 'Skilled'
+          } else {
+            this.UpdateCompetitionForm.level = 'Elite'
+          }
+        })
+      }
     },
+    mounted() {
+      //初始化详细信息
+      this.getACompetitionSpecificInfo()
+    }
   };
   </script>
-  
+
   <style>
   body {
     width: 100%;
@@ -131,7 +170,7 @@
       margin-bottom: 20px;
       width: 300px;
   }
-   
+
   h1{
     margin-top: 10px;
   }

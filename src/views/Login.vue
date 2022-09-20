@@ -48,7 +48,7 @@ export default {
           type: 'success'
         });
 
-        //TODO 跳转到用户主页面 主页面暂未编写 暂时跳到Competition页面
+        // TODO 根据用户的类别判断跳转到用户主页面还是管理员主界面
         this.$router.replace("/competition")
       })
     },

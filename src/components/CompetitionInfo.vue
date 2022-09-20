@@ -14,14 +14,14 @@
         </div>
         <div class="divMiddle">
           <span class="span1">Address:&nbsp;{{ item.address }}</span> <br>
-          <span class="span1">Time:&nbsp;{{ item.stratTime }} to {{ item.endTime }}</span> <br>
+          <span class="span1">Time:&nbsp;{{ item.startTime }} to {{ item.endTime }}</span> <br>
           <span class="span1">Level:&nbsp;{{ item.level }}</span> <br>
           <span class="span1">People:&nbsp;{{ item.remainPerson }}/{{ item.allPerson }}</span>
         </div>
         <div style="width: 9%;height: 100%;float:left">
           <el-button type="primary" class="el-button2" @click="deleteCompetition(item.activityId)">Delete</el-button>
           <br>
-          <el-button type="info" class="el-button2">Edit</el-button>
+          <el-button type="info" class="el-button2" @click="editACompetition(item.activityId)">Edit</el-button>
         </div>
       </div>
     </div>
@@ -40,7 +40,7 @@ export default {
           activityId: "1",
           name: "run",
           address: "Beijing",
-          stratTime: "2022-10-10",
+          startTime: "2022-10-10",
           endTime: "2022-11-1",
           level: 'Skilled',
           allPerson: '6',
@@ -119,7 +119,14 @@ export default {
         //刷新活动列表
         this.getCompetitionList()
       })
+    },
+    //编辑（修改）比赛信息
+    editACompetition(activityId) {
+      //存储活动id，跳转到EditCompetition
+      this.$store.commit('SET_ACTIVITY_ID',activityId)
+      this.$router.push('/editCompetition')
     }
+
   },
   watch: {
     //监视keywords keyword发生改变重新请求后端获取数据

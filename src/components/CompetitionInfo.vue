@@ -4,7 +4,7 @@
     <div class="CompetitionInfo">
       <div>
         <el-button round class="el-button1" @click="jumpToCompetitionPage">Add Competition</el-button>
-        <el-input v-model="keywords" @click="searchCompetition" clearable placeholder=" Please Input Competition"></el-input>
+        <el-input class="el-input_info" v-model="keywords" @click="searchCompetition" clearable placeholder=" Please Input Competition"></el-input>
         <el-button icon="el-icon-search" circle></el-button>
       </div>
       <div class="acForm" v-for="item in competition" :key="item.activity_id">
@@ -144,7 +144,7 @@ body {
   height: 100%;
 }
 
-.el-input {
+.el-input_info {
   width: 400px;
   margin-bottom: 10px;
   margin-top: 5px;

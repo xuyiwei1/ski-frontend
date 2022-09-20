@@ -7,11 +7,11 @@
     >
       <router-link to="/userInfo"><el-menu-item index="1" >
 
-        <span slot="title" class="span2">User Information</span>
+        <span slot="title" class="span_nav">User Information</span>
       </el-menu-item></router-link>
       <router-link to="/competitionInfo"><el-menu-item index="2" >
 
-        <span slot="title" class="span2">Competition Information</span>
+        <span slot="title" class="span_nav">Competition Information</span>
       </el-menu-item></router-link>
     </el-menu>
     <div>
@@ -34,14 +34,10 @@
     }
     body{
       width: 100%;
+      height: 100%;
     }
     .Nav{
       height:100%;width:25%;float:left;
-    }
-    .el-col{
-      height: 100%;
-      background-color: #909399;
-      border-right: px solid #909399;
     }
     .el-menu-vertical-demo{
       height: 100%;
@@ -54,7 +50,7 @@
       font-size: 30px;
       text-align: center;
     }
-    .span2{
+    .span_nav{
       display: inline-block;
       margin-top:110px;
       color: black;

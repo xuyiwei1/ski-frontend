@@ -3,21 +3,21 @@
         <h1>Update Competition Information</h1>
       <el-form class="UpdateCompetitionForm" :model="UpdateCompetitionForm">
         <el-form-item >
-      Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<el-input type="name" v-model="UpdateCompetitionForm.name"></el-input>
+      Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<el-input class="el-input_edit" type="name" v-model="UpdateCompetitionForm.name"></el-input>
         </el-form-item>
         <el-form-item >
-      Address:&nbsp;&nbsp;&nbsp;&nbsp;<el-input v-model="UpdateCompetitionForm.address"></el-input>
+      Address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<el-input class="el-input_edit" v-model="UpdateCompetitionForm.address"></el-input>
         </el-form-item>
         <el-form-item >
-          StartTime:&nbsp;&nbsp;<el-input v-model="UpdateCompetitionForm.startTime"></el-input>
+          StartTime:&nbsp;&nbsp;&nbsp;<el-input class="el-input_edit" v-model="UpdateCompetitionForm.startTime"></el-input>
         </el-form-item>
         <el-form-item >
-          EndTime:&nbsp;&nbsp;&nbsp;<el-input v-model="UpdateCompetitionForm.endTime"></el-input>
+          EndTime:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<el-input class="el-input_edit" v-model="UpdateCompetitionForm.endTime"></el-input>
         </el-form-item>
         <el-form-item >
-          MaxPeople:<el-input v-model="UpdateCompetitionForm.allPerson"></el-input>
+          MaxPeople:&nbsp;<el-input class="el-input_edit" v-model="UpdateCompetitionForm.allPerson"></el-input>
         </el-form-item>
-        Level:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<el-select v-model="level" placeholder="Please">
+        Level:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<el-select class="el-select_edit" v-model="level" placeholder="Please">
           <el-option
             v-for="item in options"
             :key="item.value"
@@ -124,15 +124,14 @@
   .UpdateCompetitionForm {
     margin: 10px;
   }
-  .el-input{
+  .el-input_edit{
       width: 300px;
   }
-  .el-select{
+  .el-select_edit{
       margin-bottom: 20px;
+      width: 300px;
   }
-  .el-radio{
-      margin-bottom: 20px;
-  }
+   
   h1{
     margin-top: 10px;
   }
@@ -143,5 +142,6 @@
   .score_input{
     margin-left: 10px;
     margin-bottom: 10px;
+    width: 300px;
   }
   </style>

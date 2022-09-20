@@ -1,31 +1,22 @@
 <template>
-  <div class="login">
+  <div class="Info">
     <el-form class="UserRegForm" :model="UserRegForm">
       <el-form-item >
-    Username:&nbsp;&nbsp;<el-input type="username" v-model="UserRegForm.username"></el-input>
+    Username:&nbsp;&nbsp;<el-input class="el-input_reg" type="username" v-model="UserRegForm.username"></el-input>
       </el-form-item>
       <el-form-item >
-    Password:&nbsp;&nbsp;<el-input v-model="UserRegForm.password"></el-input>
+    Password:&nbsp;&nbsp;<el-input class="el-input_reg" v-model="UserRegForm.password" ></el-input>
       </el-form-item>
-      Gender&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<el-radio v-model="UserRegForm.gender" label="1">male</el-radio>
-      <el-radio v-model="UserRegForm.gender" label="2">female</el-radio>
+      Gender&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<el-radio class="el-radio_reg" v-model="UserRegForm.gender" label="1">Male</el-radio>
+      <el-radio v-model="UserRegForm.gender" label="2">Female</el-radio>
       <el-form-item >
-        Age&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<el-input v-model="UserRegForm.age"></el-input>
-      </el-form-item>
-      Level&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<el-select v-model="value" placeholder="Please">
-        <el-option
-          v-for="item in options"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
-        >
-        </el-option>
-      </el-select>
-      <el-form-item >
-        Telephone&nbsp;<el-input v-model="UserRegForm.telephone"></el-input>
+        Age&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<el-input class="el-input_reg" v-model="UserRegForm.age"></el-input>
       </el-form-item>
       <el-form-item >
-        Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<el-input  v-model="UserRegForm.email"></el-input>
+        Telephone&nbsp;<el-input class="el-input_reg" v-model="UserRegForm.telephone"></el-input>
+      </el-form-item>
+      <el-form-item >
+        Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<el-input class="el-input_reg" v-model="UserRegForm.email"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button @click="Submit">Submit</el-button>
@@ -99,7 +90,7 @@ body {
   margin: 0;
   padding: 0;
 }
-.login {
+.Info {
   width: 400px;
   height: 500px;
   border: 1px solid black;
@@ -115,13 +106,11 @@ body {
 .UserRegForm {
   margin: 10px;
 }
-.el-input{
+.el-input_reg{
     width: 300px;
 }
-.el-select{
-    margin-bottom: 20px;
-}
-.el-radio{
+
+.el-radio_reg{
     margin-bottom: 20px;
 }
 </style>

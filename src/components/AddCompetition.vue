@@ -3,20 +3,20 @@
     <h1>Add Competition</h1>
     <el-form class="AddCompetitionForm" :model="AddCompetitionForm">
       <el-form-item>
-        Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<el-input type="name"
+        Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<el-input class="el-input_add" type="name"
                                                                  v-model="AddCompetitionForm.name"></el-input>
       </el-form-item>
       <el-form-item>
-        Address:&nbsp;&nbsp;&nbsp;&nbsp;<el-input v-model="AddCompetitionForm.address"></el-input>
+        Address:&nbsp;&nbsp;&nbsp;&nbsp;<el-input class="el-input_add" v-model="AddCompetitionForm.address"></el-input>
       </el-form-item>
       <el-form-item>
-        StartTime:&nbsp;&nbsp;<el-input v-model="AddCompetitionForm.startTime"></el-input>
+        StartTime:&nbsp;&nbsp;<el-input class="el-input_add" v-model="AddCompetitionForm.startTime"></el-input>
       </el-form-item>
       <!--  需要使用时间选择器？还是手动输入？    -->
       <el-form-item>
-        EndTime:&nbsp;&nbsp;&nbsp;<el-input v-model="AddCompetitionForm.endTime"></el-input>
+        EndTime:&nbsp;&nbsp;&nbsp;<el-input class="el-input_add" v-model="AddCompetitionForm.endTime"></el-input>
       </el-form-item>
-      People:&nbsp;&nbsp;&nbsp;&nbsp;<el-select v-model="AddCompetitionForm.allPerson" placeholder="Please">
+      People:&nbsp;&nbsp;&nbsp;&nbsp;<el-select class="el-select_add" v-model="AddCompetitionForm.allPerson" placeholder="Please">
       <el-option
           v-for="item in MaxPeople"
           :key="item.value"
@@ -26,7 +26,7 @@
       </el-option>
     </el-select>
       <br>
-      Level:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<el-select v-model="AddCompetitionForm.level" placeholder="Please">
+      Level:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<el-select class="el-select_add" v-model="AddCompetitionForm.level" placeholder="Please">
       <el-option
           v-for="item in options"
           :key="item.value"
@@ -150,17 +150,15 @@ body {
   margin: 10px;
 }
 
-.el-input {
+.el-input_add{
   width: 300px;
 }
 
-.el-select {
+.el-select_add {
   margin-bottom: 20px;
+  width: 300px;
 }
 
-.el-radio {
-  margin-bottom: 20px;
-}
 
 h1 {
   margin-top: 10px;

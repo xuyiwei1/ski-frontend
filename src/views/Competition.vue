@@ -1,38 +1,42 @@
 <template>
   <div>
+    <UserNav></UserNav>
     <!--  需要一个顶部的信息组件，用于展示用户的用户名信息，退出登陆等功能...，表示当前系统是哪个用户使用中  -->
-    <span style="color: red">username:{{nickname}}</span>
-    <el-button round class="el-button1" @click="addCompetition">Add Competition</el-button>
+    
+    <el-button  class="el-button1_comp" @click="addCompetition">Add Competition</el-button>
     <div>
-    <el-input  v-model="keywords" clearable placeholder=" Please Input Competition"></el-input>
+    <el-input  class="el-input_comp" v-model="keywords" clearable placeholder=" Please Input Competition"></el-input>
     <el-button icon="el-icon-search" @click="searchCompetition" circle></el-button>
     </div>
-    <div class="acForm" v-for="item in competition" :key="item.activity_id">
+    <div class="acForm_comp" v-for="item in competition" :key="item.activity_id">
         <div class="divHeader">
                 <h3>ID:{{item.activityId}}</h3>
                 <h3>Name:{{item.name}}</h3>
             </div>
             <div class="divMiddle">
-                <span>Address:&nbsp;{{item.address}}</span> <br>
-                <span>Time:&nbsp;{{item.startTime}} to {{item.endTime}}</span> <br>
-                <span>Level:&nbsp;{{item.level}}</span> <br>
-                <span>People:&nbsp;{{item.remainPerson}}/{{item.allPerson}}</span>
+                <span class="span_comp">Address:&nbsp;{{item.address}}</span> <br>
+                <span class="span_comp">Time:&nbsp;{{item.startTime}} to {{item.endTime}}</span> <br>
+                <span class="span_comp">Level:&nbsp;{{item.level}}</span> <br>
+                <span class="span_comp">People:&nbsp;{{item.remainPerson}}/{{item.allPerson}}</span>
             </div>
             <div style="width: 9%;height: 100%;float:left">
-                <el-button type="primary" @click="joinCompetition(item.activityId)">Join</el-button> <br>
-                <el-button type="info" @click="exitCompetition(item.activityId)">Exit</el-button>
-                <el-button class="el-button2" @click="viewCompetitionInfo(item.activityId)" type="info">View</el-button>
+                <el-button class="el-button_comp" type="primary" @click="joinCompetition(item.activityId)">Join</el-button> <br>
+                <el-button class="el-button_comp" type="info" @click="exitCompetition(item.activityId)">Exit</el-button> <br>
+                <el-button class="el-button_comp" @click="viewCompetitionInfo(item.activityId)" type="info">View</el-button>
             </div>
     </div>
   </div>
 </template>
 
 <script>
+  import UserNav from '@/components/UserNav.vue';
 export default {
+  components:{
+        UserNav
+      },
   data() {
     return {
       name: "Competition",
-      nickname: '',
       competition: [
         {
           activityId: "1",
@@ -124,16 +128,16 @@ body{
   width: 100%;
   background-image: url("../assets/Competition.jpg");
 }
-.el-input{
+.el-input_comp{
   width: 400px;
   margin-bottom: 20px;
 }
-.acForm {
+.acForm_comp {
   height: 150px;
   width: 98%;
   border: 3px solid black;
   margin: 5px;
-  border-radius: 5px;
+  border-radius: 5px; 
   background-color: white;
 }
 .divHeader{
@@ -141,10 +145,10 @@ body{
   height: 100%;
   border-right: 3px solid black;
   float:left;
-  background-color:#409EFF ;
 }
-.el-button{
+.el-button_comp{
   height: 40px;
+  width: 70px;
   margin-top: 5px;
   margin-left: 5px;
 }
@@ -155,19 +159,16 @@ body{
   float:left;
   text-align: left;
 }
-span{
+.span_comp{
   display: inline-block;
   margin-top: 5px;
   margin-left: 5px;
   font-weight: 600;
 }
-.el-button1{
-  float:left;margin-top:5px;width:200px;
-}
-.el-button2{
-  width: 80px;
-  height: 40px;
-  margin-top: 5px;
+.el-button1_comp{
+  float:left;
+  width:200px;
   margin-left: 5px;
 }
+
 </style>

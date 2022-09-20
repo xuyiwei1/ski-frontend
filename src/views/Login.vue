@@ -3,10 +3,10 @@
     <h1>Welcome To Ski Bar</h1>
     <el-form class="LoginForm" :model="LoginForm">
       <el-form-item label="UserName">
-        <el-input type="username" v-model="LoginForm.username"></el-input>
+        <el-input type="username" class="el-input_login" v-model="LoginForm.username"></el-input>
       </el-form-item>
       <el-form-item label="Password">
-        <el-input v-model="LoginForm.password"></el-input>
+        <el-input class="el-input_login" v-model="LoginForm.password" type="password"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button @click="loginIn">Login</el-button>
@@ -87,5 +87,8 @@ export default {
 }
 .LoginForm {
   margin: 10px;
+}
+.el-input_login{
+  width:300px;
 }
 </style>

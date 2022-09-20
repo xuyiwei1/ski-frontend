@@ -34,11 +34,6 @@
             width="100">
         </el-table-column>
         <el-table-column
-            prop="level"
-            label="Level"
-            width="100">
-        </el-table-column>
-        <el-table-column
             prop="telephone"
             label="Telephone"
             width="300">

@@ -1,8 +1,8 @@
 <template>
   <div>
+    <!--顶部的信息组件，用于展示用户的用户名信息，退出登陆等功能，表示当前系统是哪个用户使用中  -->
     <UserNav></UserNav>
-    <!--  需要一个顶部的信息组件，用于展示用户的用户名信息，退出登陆等功能...，表示当前系统是哪个用户使用中  -->
-    
+
     <el-button  class="el-button1_comp" @click="addCompetition">Add Competition</el-button>
     <div>
     <el-input  class="el-input_comp" v-model="keywords" clearable placeholder=" Please Input Competition"></el-input>
@@ -71,10 +71,6 @@ export default {
     }
   },
   methods: {
-    //获取用户名
-    getNickName() {
-      this.nickname = this.$store.getters.getUser
-    },
     //获取活动（竞赛列表）
     getActivityList() {
       this.$axios.get("/activity/list").then((resp)=>{
@@ -115,8 +111,6 @@ export default {
     }
   },
   mounted() {
-    //加载用户名
-    this.getNickName()
     //加载初始活动
     this.getActivityList()
   }
@@ -137,7 +131,7 @@ body{
   width: 98%;
   border: 3px solid black;
   margin: 5px;
-  border-radius: 5px; 
+  border-radius: 5px;
   background-color: white;
 }
 .divHeader{

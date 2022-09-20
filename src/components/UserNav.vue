@@ -1,7 +1,7 @@
 <template>
     <div class="user_nav">
         <div class="user_div">
-        <span class="span_user">UserName: {{userInfo.username}}</span>
+        <span class="span_user">UserName: {{userInfo.username}}</span> <br>
         <!-- 点击按钮退出 -->
         <el-button class="el-button_usernav" type="info" >Exit</el-button>
         <!-- 点击按钮查看个人信息 -->
@@ -20,6 +20,16 @@
                 }
             }
         },
+      methods: {
+        //获取用户名
+        getUsername() {
+          this.userInfo.username = this.$store.getters.getUser
+        },
+      },
+      mounted() {
+          //加载用户名
+          this.getUsername()
+      }
     }
 </script>
 
@@ -37,7 +47,7 @@
 
     }
     .span_user{
-        
+
         display: inline-block;
         color: black;
         font-size: 20px;

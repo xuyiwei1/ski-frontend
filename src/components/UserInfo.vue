@@ -62,9 +62,9 @@
 import Nav from "@/components/Nav";
 
 export default {
+  name: 'UserInfo',
   data() {
     return {
-      name: 'UserInfo',
       tableData: [{
         userId: '',
         username: 'jack',

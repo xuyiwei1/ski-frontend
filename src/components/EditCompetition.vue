@@ -44,9 +44,9 @@
 
   <script>
   export default {
+    name: "EditCompetition",
     data() {
       return {
-        name: "EditCompetition",
         UpdateCompetitionForm: {
           name: "",
           address: "",

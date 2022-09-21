@@ -27,9 +27,9 @@
 
 <script>
 export default {
+  name: "UserReg",
   data() {
     return {
-      name: "UserReg",
       UserRegForm: {
         username: "",
         password: "",

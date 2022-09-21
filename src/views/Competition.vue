@@ -31,12 +31,12 @@
 <script>
   import UserNav from '@/components/UserNav.vue';
 export default {
+  name: "Competition",
   components:{
         UserNav
       },
   data() {
     return {
-      name: "Competition",
       competition: [
         {
           activityId: "1",

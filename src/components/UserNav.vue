@@ -12,9 +12,9 @@
 
 <script>
     export default{
+      name:'UserNav',
         data() {
             return {
-                name:'UserNav',
                 userInfo:{
                     username:'jack'
                 }

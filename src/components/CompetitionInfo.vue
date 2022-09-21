@@ -32,9 +32,9 @@
 import Nav from "@/components/Nav";
 
 export default {
+  name: "CompetitionInfo",
   data() {
     return {
-      name: "CompetitionInfo",
       competition: [
         {
           activityId: "1",

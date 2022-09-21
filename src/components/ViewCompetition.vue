@@ -25,9 +25,9 @@
 
 <script>
 export default {
+  name: "ViewCompetition",
   data() {
     return {
-      name: "ViewCompetition",
       competition: {
         activityId: "1",
         name: "run",

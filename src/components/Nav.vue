@@ -1,6 +1,7 @@
 <!--管理员可以看到的导航菜单里面显示用户的信息和比赛的信息-->
 <template>
   <div  class="Nav">
+    <UserNav></UserNav>
     <el-menu
       default-active="2"
       class="el-menu-vertical-demo"
@@ -21,9 +22,14 @@
 </template>
 
   <script>
+    import UserNav from "@/components/UserNav";
+
     export default {
       name: 'Nav',
       methods: {
+      },
+      components: {
+        UserNav
       }
     }
   </script>

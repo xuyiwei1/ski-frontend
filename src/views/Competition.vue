@@ -102,12 +102,44 @@ export default {
     },
     //加入竞赛活动
     joinCompetition(activityId) {
-      //TODO 加入竞赛活动，需要用户的id，从localStorage取但是后端没有返回，活动ID查出来的和数据库不一致
+      //加入竞赛活动，需要用户的id和活动id
       console.log("@joinCompetition",activityId)
+      //从localStorage中获得当前用户的id
+      const userId = this.$store.getters.getUser.userId
+      console.log("userId",userId)
+      //请求加入竞赛活动
+      this.$axios.get('/activity-records/add/'+userId+"/"+activityId).then((resp) => {
+        if(resp.data.code === 200) {
+          this.$message({
+            message: 'add competition success',
+            type: 'success',
+            duration: 2000
+          });
+          this.getActivityList()
+        }else if(resp.data.code === 601) {
+          this.$message({
+            message: 'This competition has not been approved',
+            type: 'warning',
+            duration: 2000
+          });
+        }else {
+          this.$message({
+            message: 'You have already join this competition',
+            type: 'warning',
+            duration: 2000
+          });
+        }
+      })
     },
+    //退出活动
     exitCompetition(activityId) {
-      //TODO 退出竞赛活动，需要用户的id，从localStorage取但是后端没有返回，活动ID查出来的和数据库不一致
+      //TODO 退出竞赛活动，需要用户的id和活动的id，从localStorage取但是后端没有返回，活动ID查出来的和数据库不一致
       console.log("@exitCompetition",activityId)
+      const userId = this.$store.getters.getUser.userId
+      this.$axios.get("/activity-records/exitactivity/"+userId+"/"+activityId).then((resp)=>{
+        console.log(resp)
+        //提示用户退出成功或失败
+      })
     },
     //转换level对应的值1->Beginner...
     getLevel(numLevel) {

@@ -3,7 +3,7 @@
         <div class="user_div">
         <span class="span_user">UserName: {{userInfo.username}}</span> <br>
         <!-- 点击按钮退出 -->
-        <el-button class="el-button_usernav" type="info" >Exit</el-button>
+        <el-button class="el-button_usernav" type="info" @click="exitLogin" >Exit</el-button>
         <!-- 点击按钮查看个人信息 -->
         <el-button class="el-button_usernav" type="info" >View</el-button>
     </div>
@@ -23,8 +23,30 @@
       methods: {
         //获取用户名
         getUsername() {
-          this.userInfo.username = this.$store.getters.getUser
+          this.userInfo.username = this.$store.getters.getUser.username
         },
+        //退出登陆
+        exitLogin() {
+          this.$axios.get("/user/logout").then((resp) => {
+            if(resp.data.code === 200) {
+              //删除localStorage存储的个人信息
+              this.$store.commit("REMOVE_INFO")
+              //跳转到登录页
+              this.$router.replace("/login")
+              this.$message({
+                message: 'logout success',
+                type: 'success',
+                duration: 2000
+              });
+            }else {
+              this.$message({
+                message: 'logout fail',
+                type: 'error',
+                duration: 2000
+              });
+            }
+          })
+        }
       },
       mounted() {
           //加载用户名

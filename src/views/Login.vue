@@ -37,19 +37,29 @@ export default {
         if(resp.data.code === 1002) {
           this.$message({
             message: 'username or password is wrong',
-            type: 'error'
+            type: 'error',
+            duration: 2000
           });
           return
         }
-        this.$store.commit("SET_TOKEN",resp.data.data);
-        this.$store.commit("SET_USERINFO",this.LoginForm.username)
+        this.$store.commit("SET_TOKEN",resp.data.data.token);
+        this.$store.commit("SET_USERINFO",resp.data.data.user)
         this.$message({
           message: 'login successful',
           type: 'success'
         });
 
         // TODO 根据用户的类别判断跳转到用户主页面还是管理员主界面
-        this.$router.replace("/competition")
+        if(this.$store.getters.getUser.roles === 'user') {
+          //跳转到用户界面
+          this.$router.replace("/competition")
+        }else if(this.$store.getters.getUser.roles === 'admin') {
+          //跳转到管理员界面
+          this.$router.replace("/nav")
+        }else {
+          this.$router.replace("/competition")
+        }
+
       })
     },
     registerUser() {

@@ -10,6 +10,7 @@ import UserReg from "@/components/UserReg";
 import Nav from "@/components/Nav";
 import EditCompetition from "@/components/EditCompetition";
 import ViewCompetition from "@/components/ViewCompetition";
+import ChatRoom from "@/components/ChatRoom";
 
 //创建router实例对象，去管理一组一组的路由规则
 const router = new VueRouter({
@@ -53,6 +54,10 @@ const router = new VueRouter({
         {
             path: '/viewCompetition',
             component: ViewCompetition
+        },
+        {
+            path: '/messagechat',
+            component: ChatRoom
         }
     ]
 })

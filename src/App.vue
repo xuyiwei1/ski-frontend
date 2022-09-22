@@ -6,14 +6,15 @@
 
 <script>
 import Login from "@/views/Login";
+import chatroom from "@/components/ChatRoom";
 
 export default {
   name: 'App',
   components: {
-    Login
+    chatroom
   },
   mounted() {
-    this.$router.replace('/login')
+    this.$router.replace('/messagechat')
   }
 }
 </script>

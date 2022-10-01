@@ -1,10 +1,10 @@
 <template>
     <div class="chatroom">
-        <div style="padding: 10px; margin-bottom: 50px">
+        <div style=" margin-bottom: 50px">
     <el-row>
       <el-col :span="4">
-        <el-card style="width: 300px; height: 400px; color: #333">
-         <div style="padding-bottom: 10px; overflow:auto; border-bottom: 1px solid #ccc">在线用户<span style="font-size: 12px">（点击用户可以私聊）</span></div>
+        <el-card style="width: 300px; height: 630px; margin-top:100px;margin-left:300px;color: #333;box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.5);">
+         <div style="padding-bottom: 10px; overflow:auto; border-bottom: 1px solid #ccc">Online User<span style="font-size: 15px">（Click to chat privately）</span></div>
           <div style="padding: 10px 0" v-for="item in users" :key="item">
             <img v-bind:src="circleUrl" style="height: 25px; width: 25px;">
             <span>{{ item }}</span>
@@ -15,18 +15,18 @@
         </el-card>
       </el-col>
 
-      <el-col :span="20">
-        <div style="width: 800px; margin: 0 auto; background-color: white;
-                    border-radius: 5px; box-shadow: 0 0 10px #ccc">
+      <el-col  :span="20">
+        <div style="width: 1000px;height:632px;  margin: 0 auto; margin-top:100px;background-color: white;
+                    border-radius: 5px; box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.5);">
           <div style="text-align: center; line-height: 70px;">
-            小组 {{ groupID }} 聊天室
+            <h1>Group {{ groupID }} ChatRoom</h1>
           </div>
           <div style="height: 350px; overflow:auto; border-top: 1px solid #ccc" v-html="content"></div>
           <div style="height: 200px">
-            <textarea v-model="text" style="height: 160px; width: 100%; padding: 20px; border: none; border-top: 1px solid #ccc;
+            <textarea v-model="text" style="height: 160px; width: 100%;border: none; border-top: 1px solid #ccc;
              border-bottom: 1px solid #ccc; outline: none"></textarea>
             <div style="text-align: right; padding-right: 10px">
-              <el-button type="primary" size="medium" @click="send">发送</el-button>
+              <el-button type="primary" size="medium" @click="send">Send</el-button>
             </div>
           </div>
         </div>
@@ -38,6 +38,7 @@
 
 <script>
 export default {
+  name:'ChatRoom',
   data() {
     return {
       socket: null,

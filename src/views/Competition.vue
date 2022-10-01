@@ -129,16 +129,25 @@ export default {
             duration: 2000
           });
         }
+        // 更新参与活动的人数
+        this.getActivityList()
       })
     },
     //退出活动
     exitCompetition(activityId) {
-      //TODO 退出竞赛活动，需要用户的id和活动的id，从localStorage取但是后端没有返回，活动ID查出来的和数据库不一致
+      // 退出竞赛活动，需要用户的id和活动的id
       console.log("@exitCompetition",activityId)
       const userId = this.$store.getters.getUser.userId
       this.$axios.get("/activity-records/exitactivity/"+userId+"/"+activityId).then((resp)=>{
+        //TODO 用户已经加入活动后退出返回101而不是200,无法判断是否加入活动
         console.log(resp)
         //提示用户退出成功或失败
+        this.$message({
+          message: 'exit competition success',
+          type: 'success',
+          duration: 1000
+        });
+        this.getActivityList()
       })
     },
     //转换level对应的值1->Beginner...

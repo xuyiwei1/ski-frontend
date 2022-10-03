@@ -16,7 +16,7 @@
     <span class="span_view" style="margin-bottom:10px">Rank</span>
         <ol class="ol_view">
             <li class="li_view" v-for="p in user" :key="p.userId">
-                {{p.name}}-{{p.score}}
+                {{p.username}}-{{p.score}}
             </li>
         </ol>
     </div>
@@ -41,12 +41,12 @@ export default {
       user:[
         {
             userId:'1',
-            name:'Jack',
+            username:'Jack',
             score:'99'
         },
         {
             userId:'2',
-            name:'Tom',
+            username:'Tom',
             score:'99'
         }
       ]

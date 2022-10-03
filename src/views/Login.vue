@@ -49,7 +49,7 @@ export default {
           type: 'success'
         });
 
-        // TODO 根据用户的类别判断跳转到用户主页面还是管理员主界面
+        // 根据用户的类别判断跳转到用户主页面还是管理员主界面
         if(this.$store.getters.getUser.roles === 'user') {
           //跳转到用户界面
           this.$router.replace("/competition")

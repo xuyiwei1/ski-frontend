@@ -92,8 +92,9 @@
       };
     },
     methods: {
-      //请求修改活动信息
+      //请求修改活动信息并提交成绩
       Submit() {
+        //修改活动信息
         this.$axios.post('/activity/edit',this.UpdateCompetitionForm).then((resp) => {
           console.log(resp)
           if(resp.data.code === 200) {
@@ -112,6 +113,7 @@
           //跳转到competitionInfo页面
           this.$router.back()
         })
+        //TODO 输入并提交成绩 请求接口/activity-result/grade
       },
       //获取某个活动的详细信息
       getACompetitionSpecificInfo() {
@@ -120,18 +122,23 @@
           console.log(resp)
           this.UpdateCompetitionForm = resp.data.data
           if(resp.data.data.level === 1) {
-            this.UpdateCompetitionForm.level = 'Beginner'
+            this.UpdateCompetitionForm.level = '1'
           } else if(resp.data.data.level === 2) {
-            this.UpdateCompetitionForm.level = 'Skilled'
+            this.UpdateCompetitionForm.level = '2'
           } else {
-            this.UpdateCompetitionForm.level = 'Elite'
+            this.UpdateCompetitionForm.level = '3'
           }
         })
+      },
+      //获取参加某个活动的用户信息
+      getJoinUserInfo() {
+        //TODO 根据活动ID，查询出所有参加该活动的用户的信息，在activity-records表中查出所有users的ids，然后根据ids，查询所有用户信息
       }
     },
     mounted() {
       //初始化详细信息
       this.getACompetitionSpecificInfo()
+
     }
   };
   </script>

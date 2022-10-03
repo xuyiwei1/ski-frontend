@@ -15,7 +15,7 @@
         <div class="divMiddle">
           <span class="span1">Address:&nbsp;{{ item.address }}</span> <br>
           <span class="span1">Time:&nbsp;{{ item.startTime }} to {{ item.endTime }}</span> <br>
-          <span class="span1">Level:&nbsp;{{ item.level }}</span> <br>
+          <span class="span1">Level:&nbsp;{{ getLevel(item.level) }}</span> <br>
           <span class="span1">People:&nbsp;{{ item.remainPerson }}/{{ item.allPerson }}</span>
         </div>
         <div style="width: 9%;height: 100%;float:left">
@@ -125,6 +125,17 @@ export default {
       //存储活动id，跳转到EditCompetition
       this.$store.commit('SET_ACTIVITY_ID',activityId)
       this.$router.push('/editCompetition')
+    },
+    //转换level对应的值1->Beginner...
+    getLevel(numLevel) {
+      console.log(numLevel === 1)
+      if(numLevel === 1) {
+        return 'Beginner'
+      }else if(numLevel === 2) {
+        return 'Skilled'
+      }else {
+        return 'Elite'
+      }
     }
 
   },

@@ -16,7 +16,7 @@
     <span class="span_view" style="margin-bottom:10px">Rank</span>
         <ol class="ol_view">
             <li class="li_view" v-for="p in user" :key="p.userId">
-                {{p.name}}
+                {{p.name}}-{{p.score}}
             </li>
         </ol>
     </div>
@@ -53,12 +53,18 @@ export default {
     };
   },
   methods: {
-    //TODO 根据活动（比赛id）查询活动详细信息
+    // 根据活动（比赛id）查询活动详细信息
     getCompetitionSpecificInfo() {
       console.log(this.$store.getters.getActivityId)
       this.$axios.get("/activity/detail/"+this.$store.getters.getActivityId).then((resp)=>{
         console.log(resp)
         this.competition = resp.data.data
+      })
+      //查询排名
+      const activityId = this.$store.getters.getActivityId
+      this.$axios.get("/activity-result/rank?activityId="+activityId).then((resp)=>{
+        console.log("@rank",resp)
+        this.user = resp.data.data
       })
     }
   },

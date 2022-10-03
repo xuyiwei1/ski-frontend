@@ -114,6 +114,9 @@
           this.$router.back()
         })
         //TODO 输入并提交成绩 请求接口/activity-result/grade
+        this.$axios.post("/activity-result/grade",this.Rank).then((resp)=>{
+          console.log("insertGrade",resp)
+        })
       },
       //获取某个活动的详细信息
       getACompetitionSpecificInfo() {
@@ -132,13 +135,26 @@
       },
       //获取参加某个活动的用户信息
       getJoinUserInfo() {
-        //TODO 根据活动ID，查询出所有参加该活动的用户的信息，在activity-records表中查出所有users的ids，然后根据ids，查询所有用户信息
+        // 根据活动ID，查询出所有参加该活动的用户的信息，在activity-records表中查出所有users的ids，然后根据ids，查询所有用户信息
+        const activityId = this.$store.getters.getActivityId
+        this.$axios.get("/activity-records/activityuser/"+activityId).then((resp)=>{
+          console.log("!userInfo",resp)
+          if(resp.data.code === 200) {
+            this.Rank = resp.data.data
+            this.Rank.forEach((item)=>{
+              item.activityId = activityId
+            })
+            console.log("@Rank",this.Rank)
+          }else {
+            this.Rank = []
+          }
+        })
       }
     },
     mounted() {
       //初始化详细信息
       this.getACompetitionSpecificInfo()
-
+      this.getJoinUserInfo()
     }
   };
   </script>

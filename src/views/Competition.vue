@@ -139,14 +139,22 @@ export default {
       console.log("@exitCompetition",activityId)
       const userId = this.$store.getters.getUser.userId
       this.$axios.get("/activity-records/exitactivity/"+userId+"/"+activityId).then((resp)=>{
-        //TODO 用户已经加入活动后退出返回101而不是200,无法判断是否加入活动
-        console.log(resp)
+        console.log("@exit",resp)
         //提示用户退出成功或失败
-        this.$message({
-          message: 'exit competition success',
-          type: 'success',
-          duration: 1000
-        });
+        if(resp.data.code === 200) {
+          this.$message({
+            message: 'exit competition success',
+            type: 'success',
+            duration: 1000
+          });
+        }else {
+          this.$message({
+            message: 'You did not join the competition',
+            type: 'error',
+            duration: 1000
+          });
+        }
+
         this.getActivityList()
       })
     },

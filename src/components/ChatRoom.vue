@@ -3,7 +3,7 @@
         <div style=" margin-bottom: 50px">
     <el-row>
       <el-col :span="4">
-        <el-card style="width: 300px; height: 400px;margin-top:100px;margin-left:50px; color: #333">
+        <el-card style="width: 300px; height: 400px;margin-top:100px; color: #333">
          <div style="padding-bottom: 10px; overflow:auto; border-bottom: 1px solid #ccc">Online User<span style="font-size: 12px">(Click the user to chat privately)</span></div>
           <div style="padding: 10px 0" v-for="item in users" :key="item">
             <img v-bind:src="circleUrl" style="height: 25px; width: 25px;">
@@ -164,7 +164,7 @@ export default {
             "  <div class=\"el-col el-col-2\" style=\"text-align: right\">\n" +
             "  <span style=\"height: 40px; width: 40px; line-height: 40px;\">\n" +
             mydata.username + 
-            " <span> (私聊) </span>\n" +
+            " <span style=\"font-size: 10px;color: green; text-align: right\"> (私聊) </span>\n" +
             "  </span>\n" +
             "  </div>\n" +
             "  <div class=\"el-col el-col-22\" style=\"text-align: left; padding-left: 10px\">\n" +

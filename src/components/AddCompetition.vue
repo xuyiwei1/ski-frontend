@@ -53,7 +53,8 @@ export default {
         startTime: "",
         endTime: "",
         level: "",
-        allPerson: ''
+        allPerson: '',
+        userId: ''
       },
       radio: "1",
       MaxPeople: [
@@ -102,6 +103,8 @@ export default {
     //添加一个新的比赛
     Submit() {
       //console.log("@newCompetition",this.AddCompetitionForm)
+      this.AddCompetitionForm.userId = this.$store.getters.getUser.userId
+      console.log("userID",this.AddCompetitionForm.userId)
       this.$axios.post("/activity/create", this.AddCompetitionForm).then((resp) => {
         console.log(resp)
         if (resp.data.code === 200) {

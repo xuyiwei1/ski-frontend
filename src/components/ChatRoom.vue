@@ -57,7 +57,7 @@ export default {
     //绑定事件
 	  window.addEventListener('beforeunload', e => this.closeWebsocket(e))
   },
-  beforeDestroy() { 
+  beforeDestroy() {
 	  //卸载事件
  	  window.removeEventListener('beforeunload', e => this.closeWebsocket(e))
   },
@@ -68,7 +68,7 @@ export default {
         this.socket.close();
               let _this=this
               this.socket.onclose = function(evt) {
-                  console.log("websocket已关闭"); 
+                  console.log("websocket已关闭");
               };
       }
     },
@@ -130,7 +130,7 @@ export default {
     },
     createContent(remoteUser, nowUser, mydata, sendUser) {  // 这个方法是用来将 json的聊天消息数据转换成 html的。
       let html = '';
-    
+
       //更新content的内容（上线）
       if(mydata.messageType=="1"){
         html = "<span style=\"width: 100%; height: 30px;line-height: 30px;font-size: 14px;\">" + mydata.username +"上线了"+"</span><br>";
@@ -140,7 +140,7 @@ export default {
           // console.log("成功")
           html = "<span style=\"width: 100%;height: 30px;line-height: 30px;font-size: 14px;\">"+ mydata.username +"下线了"+"</span><br>";
       }
-     
+
       //更新content的内容（更新用户群发消息）
       // 当前用户消息
       if (nowUser) { // nowUser 表示是否显示当前用户发送的聊天消息，绿色气泡
@@ -154,7 +154,7 @@ export default {
             "  </span>\n" +
             "  </div>\n" +
             "</div>";
-      } 
+      }
       console.log("第一个"+html)
       console.log("sendUser 是 "+sendUser)
       if (mydata.messageType=="4" && sendUser == '') {   // 表示远程用户聊天消息，蓝色的气泡
@@ -163,7 +163,7 @@ export default {
           html = "<div class=\"el-row\" style=\"padding: 5px 0\">\n" +
             "  <div class=\"el-col el-col-2\" style=\"text-align: right\">\n" +
             "  <span style=\"height: 40px; width: 40px; line-height: 40px;\">\n" +
-            mydata.username + 
+            mydata.username +
             " <span style=\"font-size: 10px;color: green; text-align: right\"> (私聊) </span>\n" +
             "  </span>\n" +
             "  </div>\n" +
@@ -184,14 +184,16 @@ export default {
             "</div>";
         }
       }
-      
+
       console.log("第二个"+html)
       this.content += html;
     },
     init() {
       // this.user = sessionStorage.getItem("user") ? JSON.parse(sessionStorage.getItem("user")) : {}
-      let username = "用户"+Math.ceil(Math.random()*100);
-      let groupId = Math.ceil(Math.random()*2);
+      //let username = "用户"+Math.ceil(Math.random()*100);
+      //let groupId = Math.ceil(Math.random()*2);
+      let username = sessionStorage.getItem("username");
+      let groupId = sessionStorage.getItem("activityName");
       this.user = username;
       this.groupID = groupId;
 
@@ -208,7 +210,7 @@ export default {
         // 开启一个websocket服务
         this.socket = new WebSocket(socketUrl);
         let mysocket = this.socket;
-        
+
         //打开事件
         mysocket.onopen = function () {
           console.log("websocket已打开");

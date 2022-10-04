@@ -45,7 +45,7 @@
         <br>
         <el-button class="el-button_viewUser" @click="viewCompetitionInfo(item.activityId)" type="info">View</el-button>
         <br>
-        <el-button class="el-button_viewUser"  type="info">Chat</el-button>
+        <el-button class="el-button_viewUser"  type="info" @click="chatWithOthers(item.name)">Chat</el-button>
       </div>
     </div>
   </div>
@@ -118,7 +118,7 @@ export default {
         }
       })
     },
-    //TODO 获取某个用户参加的所有活动
+    // 获取某个用户参加的所有活动
     getActivityByUserId() {
       const userId = this.$store.getters.getUser.userId
       this.$axios.get("/activity-records/userpreviousactivityrecord/"+userId).then((resp)=>{
@@ -156,6 +156,12 @@ export default {
       this.$store.commit("SET_ACTIVITY_ID",activityId);
       // 跳转到竞赛详情页面
       this.$router.push("/viewCompetition")
+    },
+    chatWithOthers(activityName) {
+      //存储用户名和活动名到sessionStorage
+      sessionStorage.setItem("username",this.$store.getters.getUser.username)
+      sessionStorage.setItem("activityName",activityName)
+      this.$router.push("/messagechat")
     }
   },
   mounted() {

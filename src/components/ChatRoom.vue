@@ -75,7 +75,6 @@ export default {
     },
     select(item){
       //选择用户进行私聊
-      console.log("______________________"+item); 
       if (this.chatUser == item){
         this.chatUser = '';
       }else {
@@ -125,13 +124,12 @@ export default {
           // 构建消息内容，本人消息
           this.sendUser = this.user;
           console.log("发送前 "+this.sendUser)
-          console.log("+++++++++++++++++++++++++++ "+this.user)
-          this.createContent(null, this.user, message, tousername)
+          this.createContent(null, this.user, message)
           this.text = '';
         }
       }
     },
-    createContent(remoteUser, nowUser, mydata, sendUser, toUserName) {  // 这个方法是用来将 json的聊天消息数据转换成 html的。
+    createContent(remoteUser, nowUser, mydata, sendUser) {  // 这个方法是用来将 json的聊天消息数据转换成 html的。
       let html = '';
     
       //更新content的内容（上线）
@@ -161,15 +159,13 @@ export default {
       console.log("第一个"+html)
       console.log("sendUser 是 "+sendUser)
       if (mydata.messageType=="4" && sendUser == '') {   // 表示远程用户聊天消息，蓝色的气泡
-      console.log("**************************** "+toUserName)
-        if(toUserName){
+      console.log("**************************** "+mydata.toUsername)
+        if(mydata.toUsername){
           html = "<div class=\"el-row\" style=\"padding: 5px 0\">\n" +
             "  <div class=\"el-col el-col-2\" style=\"text-align: right\">\n" +
             "  <span style=\"height: 40px; width: 40px; line-height: 40px;\">\n" +
-            mydata.username+ 
-            " <span>\n" +
-            "(私聊)"+
-            "  </span>\n" +
+            mydata.username + 
+            " <span> (私聊) </span>\n" +
             "  </span>\n" +
             "  </div>\n" +
             "  <div class=\"el-col el-col-22\" style=\"text-align: left; padding-left: 10px\">\n" +
@@ -226,7 +222,7 @@ export default {
             _this.users = data.onlineUsers.filter(item => item !== username)  // 获取当前连接的所有用户信息，并且排除自身，自己不会出现在自己的聊天列表里
           } else {
               // 构建消息内容
-              _this.createContent(1,null,data,_this.sendUser,'')
+              _this.createContent(1,null,data,_this.sendUser)
               _this.sendUser = '';
               console.log("这是接收时的"+_this.sendUser);
           }

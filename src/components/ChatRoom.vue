@@ -3,8 +3,9 @@
         <div style=" margin-bottom: 50px">
     <el-row>
       <el-col :span="4">
-        <el-card style="width: 300px; height: 630px; margin-top:100px;margin-left:300px;color: #333;box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.5);">
-         <div style="padding-bottom: 10px; overflow:auto; border-bottom: 1px solid #ccc">Online User<span style="font-size: 15px">（Click to chat privately）</span></div>
+        <el-card style="width: 300px; height: 400px; color: #333">
+         <div style="padding-bottom: 10px; overflow:auto; border-bottom: 1px solid #ccc">在线用户<span style="font-size: 12px">（点击用户可以私聊）</span></div>
+
           <div style="padding: 10px 0" v-for="item in users" :key="item">
             <img v-bind:src="circleUrl" style="height: 25px; width: 25px;">
             <span>{{ item }}</span>
@@ -16,7 +17,7 @@
       </el-col>
 
       <el-col  :span="20">
-        <div style="width: 1000px;height:632px;  margin: 0 auto; margin-top:100px;background-color: white;
+        <div style="width: 400px;height:632px;  margin: 0 auto; margin-top:100px;background-color: white;
                     border-radius: 5px; box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.5);">
           <div style="text-align: center; line-height: 70px;">
             <h1>Group {{ groupID }} ChatRoom</h1>
@@ -74,6 +75,7 @@ export default {
     },
     select(item){
       //选择用户进行私聊
+      console.log("______________________"+item); 
       if (this.chatUser == item){
         this.chatUser = '';
       }else {
@@ -123,12 +125,13 @@ export default {
           // 构建消息内容，本人消息
           this.sendUser = this.user;
           console.log("发送前 "+this.sendUser)
-          this.createContent(null, this.user, message, '')
+          console.log("+++++++++++++++++++++++++++ "+this.user)
+          this.createContent(null, this.user, message, tousername)
           this.text = '';
         }
       }
     },
-    createContent(remoteUser, nowUser, mydata, sendUser) {  // 这个方法是用来将 json的聊天消息数据转换成 html的。
+    createContent(remoteUser, nowUser, mydata, sendUser, toUserName) {  // 这个方法是用来将 json的聊天消息数据转换成 html的。
       let html = '';
     
       //更新content的内容（上线）
@@ -149,8 +152,8 @@ export default {
             "    <div class=\"tip left\">" + mydata + "</div>\n" +
             "  </div>\n" +
             "  <div class=\"el-col el-col-2\">\n" +
-            "  <span class=\"el-avatar el-avatar--circle\" style=\"height: 40px; width: 40px; line-height: 40px;\">\n" +
-            "    <img src=\"https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png\" style=\"object-fit: cover;\">\n" +
+            "  <span style=\"height: 40px; width: 40px; line-height: 40px;\">\n" +
+            nowUser+
             "  </span>\n" +
             "  </div>\n" +
             "</div>";
@@ -158,16 +161,33 @@ export default {
       console.log("第一个"+html)
       console.log("sendUser 是 "+sendUser)
       if (mydata.messageType=="4" && sendUser == '') {   // 表示远程用户聊天消息，蓝色的气泡
-        html = "<div class=\"el-row\" style=\"padding: 5px 0\">\n" +
+      console.log("**************************** "+toUserName)
+        if(toUserName){
+          html = "<div class=\"el-row\" style=\"padding: 5px 0\">\n" +
             "  <div class=\"el-col el-col-2\" style=\"text-align: right\">\n" +
-            "  <span class=\"el-avatar el-avatar--circle\" style=\"height: 40px; width: 40px; line-height: 40px;\">\n" +
-            "    <img src=\"https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png\" style=\"object-fit: cover;\">\n" +
+            "  <span style=\"height: 40px; width: 40px; line-height: 40px;\">\n" +
+            mydata.username+ 
+            " <span>\n" +
+            "(私聊)"+
+            "  </span>\n" +
             "  </span>\n" +
             "  </div>\n" +
             "  <div class=\"el-col el-col-22\" style=\"text-align: left; padding-left: 10px\">\n" +
             "    <div class=\"tip right\">" + mydata.textMessage + "</div>\n" +
             "  </div>\n" +
             "</div>";
+        } else{
+          html = "<div class=\"el-row\" style=\"padding: 5px 0\">\n" +
+            "  <div class=\"el-col el-col-2\" style=\"text-align: right\">\n" +
+            "  <span style=\"height: 40px; width: 40px; line-height: 40px;\">\n" +
+            mydata.username+
+            "  </span>\n" +
+            "  </div>\n" +
+            "  <div class=\"el-col el-col-22\" style=\"text-align: left; padding-left: 10px\">\n" +
+            "    <div class=\"tip right\">" + mydata.textMessage + "</div>\n" +
+            "  </div>\n" +
+            "</div>";
+        }
       }
       
       console.log("第二个"+html)
@@ -206,7 +226,7 @@ export default {
             _this.users = data.onlineUsers.filter(item => item !== username)  // 获取当前连接的所有用户信息，并且排除自身，自己不会出现在自己的聊天列表里
           } else {
               // 构建消息内容
-              _this.createContent(1,null,data,_this.sendUser)
+              _this.createContent(1,null,data,_this.sendUser,'')
               _this.sendUser = '';
               console.log("这是接收时的"+_this.sendUser);
           }

@@ -113,7 +113,7 @@
           //跳转到competitionInfo页面
           this.$router.back()
         })
-        //TODO 输入并提交成绩 请求接口/activity-result/grade
+        //输入并提交成绩 请求接口/activity-result/grade
         this.$axios.post("/activity-result/grade",this.Rank).then((resp)=>{
           console.log("insertGrade",resp)
         })

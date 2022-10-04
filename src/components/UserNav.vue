@@ -5,7 +5,7 @@
         <!-- 点击按钮退出 -->
         <el-button class="el-button_usernav" type="info" @click="exitLogin" >Exit</el-button>
         <!-- 点击按钮查看个人信息 -->
-        <el-button class="el-button_usernav" type="info" >View</el-button>
+        <el-button class="el-button_usernav" type="info" @click="viewUserInfo">View</el-button>
     </div>
     </div>
 </template>
@@ -46,6 +46,10 @@
               });
             }
           })
+        },
+        //查看用户个人信息
+        viewUserInfo() {
+          this.$router.push("/viewUser")
         }
       },
       mounted() {

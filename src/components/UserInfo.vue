@@ -50,7 +50,7 @@
             width="200">
           <template slot-scope="scope">
             <el-button @click="handleClick(scope.row)" type="text" size="20px">Delete</el-button>
-            <el-button type="text" size="20px">Edit</el-button>
+            <el-button type="text" size="20px" @click="editUserInfo(scope.row)">Edit</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -115,6 +115,12 @@ export default {
           }
         })
       })
+    },
+    //编辑用户信息
+    editUserInfo(row) {
+      console.log(row.userId)
+      this.$store.commit("SET_USER_ID",row.userId)
+      this.$router.push("/viewUser")
     }
   },
   mounted() {

@@ -29,6 +29,12 @@ const mutations = {
     },
     SET_ACTIVITY_ID(state,activityId) {
         state.activityId = activityId
+    },
+    SET_USER_ID(state,userId) {
+        state.userId = userId
+    },
+    REMOVE_USER_ID(state) {
+        state.userId = ''
     }
 }
 //准备state对象——保存具体的数据
@@ -38,7 +44,9 @@ const state = {
     //保存用户的信息，从localStorage中获取
     userInfo: JSON.parse(localStorage.getItem("userInfo")),
     //活动的id
-    activityId: ''
+    activityId: '',
+    //用户的id
+    userId: ''
 }
 
 const getters = {
@@ -57,6 +65,9 @@ const getters = {
     },
     getActivityId(state) {
         return state.activityId
+    },
+    getUserId(state) {
+        return state.userId
     }
 }
 

@@ -11,10 +11,12 @@ import chatroom from "@/components/ChatRoom";
 export default {
   name: 'App',
   components: {
-    chatroom
+    chatroom,
+    Login
   },
   mounted() {
-    this.$router.replace('/messagechat')
+    // this.$router.replace('/messagechat')
+    this.$router.replace('/login')
   }
 }
 </script>

@@ -123,6 +123,7 @@ export default {
       const userId = this.$store.getters.getUser.userId
       this.$axios.get("/activity-records/userpreviousactivityrecord/"+userId).then((resp)=>{
         console.log("@userCompetition",resp)
+        this.competition = resp.data.data
       })
     },
     //退出活动
@@ -146,8 +147,7 @@ export default {
             duration: 1000
           });
         }
-
-        this.getActivityList()
+        this.getActivityByUserId()
       })
     },
     //查看活动详情

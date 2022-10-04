@@ -3,9 +3,8 @@
         <div style=" margin-bottom: 50px">
     <el-row>
       <el-col :span="4">
-        <el-card style="width: 300px; height: 400px; color: #333">
-         <div style="padding-bottom: 10px; overflow:auto; border-bottom: 1px solid #ccc">在线用户<span style="font-size: 12px">（点击用户可以私聊）</span></div>
-
+        <el-card style="width: 300px; height: 400px;margin-top:100px;margin-left:50px; color: #333">
+         <div style="padding-bottom: 10px; overflow:auto; border-bottom: 1px solid #ccc">Online User<span style="font-size: 12px">(Click the user to chat privately)</span></div>
           <div style="padding: 10px 0" v-for="item in users" :key="item">
             <img v-bind:src="circleUrl" style="height: 25px; width: 25px;">
             <span>{{ item }}</span>
@@ -17,7 +16,7 @@
       </el-col>
 
       <el-col  :span="20">
-        <div style="width: 400px;height:632px;  margin: 0 auto; margin-top:100px;background-color: white;
+        <div style="width: 600px;height:632px;  margin: 0 auto; margin-top:100px;background-color: white;
                     border-radius: 5px; box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.5);">
           <div style="text-align: center; line-height: 70px;">
             <h1>Group {{ groupID }} ChatRoom</h1>

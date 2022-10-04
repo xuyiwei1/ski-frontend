@@ -14,6 +14,11 @@
 
         <span slot="title" class="span_nav">Competition Information</span>
       </el-menu-item></router-link>
+
+      <el-menu-item index="2" >
+
+<span slot="title" class="span_nav">Approve Competition</span>
+</el-menu-item>
     </el-menu>
     <div>
       <router-view/>

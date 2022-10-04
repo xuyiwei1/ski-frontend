@@ -11,9 +11,6 @@
                                            v-model="UserEditForm.username"></el-input>
           </el-form-item>
           <el-form-item>
-            Password:&nbsp;&nbsp;<el-input class="el-input_edit" v-model="UserEditForm.password"></el-input>
-          </el-form-item>
-          <el-form-item>
             Age&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<el-input class="el-input_edit"
                                                                                            v-model="UserEditForm.age"></el-input>
           </el-form-item>
@@ -44,9 +41,11 @@
         <span class="span_edit">People:&nbsp;{{ item.remainPerson }}/{{ item.allPerson }}</span>
       </div>
       <div style="width: 9%;height: 100%;float:left">
-        <el-button class="el-button_edit" type="info" @click="exitCompetition(item.activityId)">Exit</el-button>
+        <el-button class="el-button_viewUser" type="info" @click="exitCompetition(item.activityId)">Exit</el-button>
         <br>
-        <el-button class="el-button_edit" @click="viewCompetitionInfo(item.activityId)" type="info">View</el-button>
+        <el-button class="el-button_viewUser" @click="viewCompetitionInfo(item.activityId)" type="info">View</el-button>
+        <br>
+        <el-button class="el-button_viewUser"  type="info">Chat</el-button>
       </div>
     </div>
   </div>
@@ -215,10 +214,10 @@ body {
   float: left;
 }
 
-.el-button_edit {
+.el-button_viewUser {
   height: 40px;
   width: 70px;
-  margin-top: 20px;
+  margin-top: 5px;
   margin-left: 5px;
 }
 

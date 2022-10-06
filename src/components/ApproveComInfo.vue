@@ -63,7 +63,7 @@ export default {
       console.log("@activityId", activityId);
       this.$axios.get("/activity/detail/" + activityId).then((resp) => {
         console.log(resp)
-        //TODO 展示查询到的比赛详细信息 和 排名 页面需要修改？
+        // 展示查询到的比赛详细信息 和 排名 页面需要修改？
         /*{ 这是从后端查询到的id为1的比赛信息
           "activityId": 1,
             "userId": 1,
@@ -120,9 +120,11 @@ export default {
           this.$message({
             message: 'Approval activity passed',
             type: 'success',
-            duration: 1000
+            duration: 2000
           });
         }
+        //刷新未审批的活动列表
+        this.getUnapprovedActivity()
       })
     },
     // 拒绝活动:直接删除该活动
@@ -133,10 +135,10 @@ export default {
           this.$message({
             message: 'The activity was rejected successfully',
             type: 'success',
-            duration: 1000
+            duration: 2000
           });
         }
-        //刷新为审批的活动列表
+        //刷新未审批的活动列表
         this.getUnapprovedActivity()
       })
 

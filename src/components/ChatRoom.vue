@@ -164,7 +164,7 @@ export default {
             "  <div class=\"el-col el-col-2\" style=\"text-align: right\">\n" +
             "  <span style=\"height: 40px; width: 40px; line-height: 40px;\">\n" +
             mydata.username +
-            " <span style=\"font-size: 5px;color: green; text-align: right\"> (privately) </span>\n" +
+            " <span style=\"font-size: 10px;color: green; text-align: right\"> (private) </span>\n" +
             "  </span>\n" +
             "  </div>\n" +
             "  <div class=\"el-col el-col-22\" style=\"text-align: left; padding-left: 10px\">\n" +

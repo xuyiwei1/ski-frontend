@@ -64,7 +64,6 @@ export default {
     return {
       UserEditForm: {
         username: "Jack",
-        password: "5456456",
         age: "22",
         telephone: "1311313",
         email: "xxx@qq.com",

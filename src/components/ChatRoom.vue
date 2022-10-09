@@ -133,12 +133,12 @@ export default {
 
       //更新content的内容（上线）
       if(mydata.messageType=="1"){
-        html = "<span style=\"width: 100%; height: 30px;line-height: 30px;font-size: 14px;\">" + mydata.username +"上线了"+"</span><br>";
+        html = "<span style=\"width: 100%; height: 30px;line-height: 30px;font-size: 14px;\">" + mydata.username +" online"+"</span><br>";
       }
       //更新content的内容（下线）
       if(mydata.messageType=="2"){
           // console.log("成功")
-          html = "<span style=\"width: 100%;height: 30px;line-height: 30px;font-size: 14px;\">"+ mydata.username +"下线了"+"</span><br>";
+          html = "<span style=\"width: 100%;height: 30px;line-height: 30px;font-size: 14px;\">"+ mydata.username +" offline"+"</span><br>";
       }
 
       //更新content的内容（更新用户群发消息）
@@ -162,9 +162,9 @@ export default {
         if(mydata.toUsername){
           html = "<div class=\"el-row\" style=\"padding: 5px 0\">\n" +
             "  <div class=\"el-col el-col-2\" style=\"text-align: right\">\n" +
-            "  <span style=\"height: 40px; width: 40px; line-height: 40px;\">\n" +
+            "  <span style=\"height: 40px; width: 60px; line-height: 40px;\">\n" +
             mydata.username +
-            " <span style=\"font-size: 5px;color: green;\"> (private) </span>\n" +
+            " <span style=\"font-size: 5px;color: green; padding: 10px\"> (private) </span>\n" +
             "  </span>\n" +
             "  </div>\n" +
             "  <div class=\"el-col el-col-22\" style=\"text-align: left; padding-left: 10px\">\n" +

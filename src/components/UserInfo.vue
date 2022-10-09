@@ -19,11 +19,6 @@
             width="150">
         </el-table-column>
         <el-table-column
-            prop="password"
-            label="Password"
-            width="200">
-        </el-table-column>
-        <el-table-column
             prop="gender"
             label="Gender"
             width="100">

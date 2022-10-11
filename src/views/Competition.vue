@@ -111,7 +111,7 @@ export default {
       this.$axios.get('/activity-records/add/'+userId+"/"+activityId).then((resp) => {
         if(resp.data.code === 200) {
           this.$message({
-            message: 'add competition success',
+            message: 'join competition success',
             type: 'success',
             duration: 2000
           });

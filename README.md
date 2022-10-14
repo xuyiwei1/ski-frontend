@@ -5,14 +5,15 @@
 - Login
 - Competition
   - Add Competition
-  - Edit Competition
-  - Delete Competition
-  - Approve Competition
   - Search Competition
   - View Competition
   - Join Competition
   - Exit Competition
 - View User
+- Admin
+  - Edit Competition
+  - Delete Competition
+  - Approve Competition
 - Ranking
 - Email
   - Notification

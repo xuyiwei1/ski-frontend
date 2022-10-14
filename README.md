@@ -11,6 +11,7 @@
   - View Competition
   - Join Competition
   - Exit Competition
+- View User
 - Ranking
 - Email
   - Notification

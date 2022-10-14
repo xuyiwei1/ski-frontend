@@ -8,6 +8,7 @@
   - Edit Competition
   - Delete Competition
   - Approve Competition
+  - Search Competition
   - View Competition
   - Join Competition
   - Exit Competition

@@ -37,7 +37,7 @@ axios.interceptors.response.use(resp=>{
         localStorage.removeItem('userInfo')
         //提示登陆已经过期，请重新登陆
         ElementUI.Message({
-            message: 'Your login status has expired, please login again',
+            message: resp.data.msg,
             type: 'error',
             duration: 2000
         });

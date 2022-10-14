@@ -5,9 +5,8 @@
 2.Login
 3.Competition
 4.Ranking
-5.Group
-6.Email
-7.Chatting
+5.Email
+6.Chatting
 
 ## Development Environment
 Operating System: 

@@ -1,12 +1,13 @@
 # Project Name：Ski-bar
 
 ## Working functionalities of the project
-1.Registration
-2.Login
-3.Competition
-4.Ranking
-5.Email
-6.Chatting
+- Registration
+- Login
+- Competition
+- Ranking
+- Email
+  - Notification
+- Chatting
 
 ## Development Environment
 Operating System: 

@@ -4,11 +4,12 @@
 - Registration
 - Login
 - Competition
-  -Add Competition
-  -Edit Competition
-  -Delete Competition
-  -Approve Competition
-  -View Competition
+  - Add Competition
+  - Edit Competition
+  - Delete Competition
+  - Approve Competition
+  - View Competition
+  - join Competition
 - Ranking
 - Email
   - Notification

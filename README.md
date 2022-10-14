@@ -9,7 +9,8 @@
   - Delete Competition
   - Approve Competition
   - View Competition
-  - join Competition
+  - Join Competition
+  - Exit Competition
 - Ranking
 - Email
   - Notification

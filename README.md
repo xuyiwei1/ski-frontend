@@ -14,6 +14,8 @@
   - Edit Competition
   - Delete Competition
   - Approve Competition
+  - Edit User
+  - Delete User
 - Ranking
 - Email
   - Notification

@@ -4,6 +4,11 @@
 - Registration
 - Login
 - Competition
+  -Add Competition
+  -Edit Competition
+  -Delete Competition
+  -Approve Competition
+  -View Competition
 - Ranking
 - Email
   - Notification
